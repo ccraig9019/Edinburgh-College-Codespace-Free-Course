@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=utf-8 />
+        <title>Vanilla JS Challenge - Rock Paper Scissors</title>
+    </head> 
+    <body>
+	   <h1>Rock, paper, scissors!</h1>
+	   
+	   <h4>Make your choice and play against the computer.</h4>
+	   
+	   <!--One button per player choice which will insert a value into a field below called "Player choice"-->
+	   <button type="button" id="rock" onclick="playerRock(); computerPick(); playerVsComputer()">Rock</button>
+	   <button type="button" id="paper" onclick="playerPaper(); computerPick(); playerVsComputer()">Paper</button>
+	   <button type="button" id="scissors" onclick="playerScissors(); computerPick(); playerVsComputer()">Scissors</button>
+
+	   
+	   <br>
+	   <br>
+	
+		<div>
+			<form>
+				<label for = "playerChoice">Player choice:<label>
+				<input type="text" id="playerChoice" name="playerChoice"><br><br>
+				<label for = "computerChoice">Computer choice:<label>
+				<input type="text" id="computerChoice" name="computerChoice"><br><br>
+				<label for = "result">Result:<label>
+				<input type="text" id="result" name="result"><br>
+			</form> 
+		</div>
+	
+	<script>
+	//blocks to assign player choice based on button clicked
+		function playerRock() {
+			document.getElementById("playerChoice").value = "Rock";
+			}
+		function playerPaper() {
+			document.getElementById("playerChoice").value = "Paper";
+			}
+		function playerScissors() {
+			document.getElementById("playerChoice").value = "Scissors";
+			}	
+		
+		var computerChoice;
+			
+		//block to evaluate computer Choice at random
+		function computerPick() {
+			let n = Math.random();
+			//console.log(n); //for debugging
+			if (n < 0.33) {
+				computerChoice = "Rock";
+				}
+			else if (n > 0.67) {
+				computerChoice = "Scissors";
+				}
+			else {
+				computerChoice = "Paper"
+				}
+			
+			document.getElementById("computerChoice").value = computerChoice;
+			}
+		
+		//function to compare the player's choice and the computer's choice
+		function playerVsComputer() {
+			
+			var playerChoice = document.getElementById("playerChoice").value;
+			var r;
+			
+			console.log(playerChoice);
+			console.log(computerChoice);
+			
+			if (playerChoice == computerChoice) {
+				r = "It's a draw!";
+			}
+				
+			else if (playerChoice == "Rock") {
+				if (computerChoice == "Paper") {
+					r = "The computer wins!"; 
+					}
+				else if (computerChoice == "Scissors") {
+					r = "You win!";
+				}
+			}
+				
+			else if (playerChoice == "Paper") {
+				if (computerChoice == "Rock") {
+					r = "You win!";
+				}
+				else if (computerChoice == "Scissors") {
+					r = "The computer wins!";
+					}
+			}
+			
+			else if (playerChoice == "Scissors") {
+				if (computerChoice == "Rock") {
+					r = "The computer wins!";
+				}
+				else if (computerChoice == "Paper") {
+					r = "You win!";
+				}
+			}	
+			
+			console.log(r); //for debugging		
+			document.getElementById("result").value = r; //assigning the result of the playerVsComputer function to the form box
+		}
+			
+			
+		</script>
+			
+	</body>
+		
+</html>
