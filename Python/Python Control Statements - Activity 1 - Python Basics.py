@@ -1,4 +1,5 @@
 print("Testing data:")
+#Equations to evaluate, results printed
 print(-5 + 8 * 6)
 print((55+9)%9)
 print(20 + (-3) * 5 / 8)
